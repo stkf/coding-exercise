@@ -4,7 +4,7 @@ Fork this repository, answer the questions in whichever form you want (e.g. `.tx
 
 ## Question 1 - How big is this file?
 
-The file shown in the following screenshot, with MIME  type `text/plain` is seemingly small. What is the file's size in `bytes`?
+The following screenshot is of a file opened in a text editor, with MIME  type `text/plain`, and is seemingly small. What is the file's size in `bytes`?
 
 ![alt text](how-big-is-this-file.png)
 
