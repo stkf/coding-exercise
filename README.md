@@ -25,7 +25,7 @@ Java uses Heap memory and Stack memory. Can you describe all the differences bet
 
 ## Question 4 - Binary File Analysis
 
-Binary file analysis take variou forms. Write a Dockerized program, in the language of your choice, that finds all the printable `strings` in an input binary file and prints them out to `stdout`.
+Binary file analysis take various forms. Write a Dockerized program, in the language of your choice, that finds all the printable `strings` in an input binary file and prints them out to `stdout`.
 
 Example of desired functionality:
 
