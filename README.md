@@ -4,7 +4,7 @@ Fork this repository, answer the questions in whichever form you want (e.g. `.tx
 
 ## Question 1 - How big is this file?
 
-The file shown in the following screenshot, with MIME  type `text/plain` is seemingly small. What is the file's size in `bytes`?
+The following screenshot is of a file opened in a text editor, with MIME  type `text/plain`, and is seemingly small. What is the file's size in `bytes`?
 
 ![alt text](how-big-is-this-file.png)
 
@@ -19,13 +19,28 @@ Value: 'blue', Action: paintItBlue()
 Value: 'default', Action: paintIt()
 ```
 
-## Question 3 - Java Memory
+## Question 3 - StackOverflow and Java
 
-Java uses Heap memory and Stack memory. Can you describe all the differences between them?
+The most copied Java code snippet in StackOverflow has a bug in it:
+
+```
+private static String[] prefix = new String[] {"","K","M","G","T","P","E"};
+
+public static String humanByteCount(long bytes, boolean si) {
+    if (bytes == 0) return "0 B";
+    int unit = si ? 1000 : 1024;
+    double power = Math.min(Math.floor(Math.log(bytes)/Math.log(unit)), 6);
+    String pref = prefix[(int) power] + (si && power > 0 ? "iB" : "B");
+    String format = power == 0 ? "%.0f %s" : "%.1f %s";
+    return String.format(format, bytes / Math.pow(unit, power), pref);
+}
+```
+
+Can you find the bug?
 
 ## Question 4 - Binary File Analysis
 
-Binary file analysis take various forms. Write a Dockerized program, in the language of your choice, that finds all the printable `strings` in an input binary file and prints them out to `stdout`.
+Binary file analysis takes various forms. Write a Dockerized program, in the language of your choice, that finds all the printable `strings` in an input binary file and prints them out to `stdout`.
 
 Example of desired functionality:
 
