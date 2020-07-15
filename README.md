@@ -21,7 +21,7 @@ Value: 'default', Action: paintIt()
 
 ## Question 3 - StackOverflow and Java
 
-The most copied Java code snipper in StackOverflow has a bug in it:
+The most copied Java code snippet in StackOverflow has a bug in it:
 
 ```
 private static String[] prefix = new String[] {"","K","M","G","T","P","E"};
