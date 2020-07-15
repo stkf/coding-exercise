@@ -19,9 +19,24 @@ Value: 'blue', Action: paintItBlue()
 Value: 'default', Action: paintIt()
 ```
 
-## Question 3 - Java Memory
+## Question 3 - StackOverflow and Java
 
-Java uses Heap memory and Stack memory. Can you describe all the differences between them?
+The most copied Java code snipper in StackOverflow has a bug in it:
+
+```
+private static String[] prefix = new String[] {"","K","M","G","T","P","E"};
+
+public static String humanByteCount(long bytes, boolean si) {
+    if (bytes == 0) return "0 B";
+    int unit = si ? 1000 : 1024;
+    double power = Math.min(Math.floor(Math.log(bytes)/Math.log(unit)), 6);
+    String pref = prefix[(int) power] + (si && power > 0 ? "iB" : "B");
+    String format = power == 0 ? "%.0f %s" : "%.1f %s";
+    return String.format(format, bytes / Math.pow(unit, power), pref);
+}
+```
+
+Can you find the bug?
 
 ## Question 4 - Binary File Analysis
 
