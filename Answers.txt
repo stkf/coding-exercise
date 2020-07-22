@@ -1,0 +1,123 @@
+So here it goes:
+Question 1 - How big is this file?
+5 bytes - 3 to keep 0.1 and <CR><LF>. The image shows it's there
+
+Question 2 - Python and Switch Statements:
+
+Here is the code:
+import sys
+
+def paintItRed():
+    print "I am painted red"
+
+def paintItGreen():
+    print "I am painted green"
+
+def paintItBlue():
+    print "I am painted blue"
+
+def paintIt():
+    print "I am not painted"
+
+def doSwitch(var):
+    dispatch = {
+            'red' : paintItRed,
+            'green' : paintItGreen,
+            'blue' : paintItBlue
+            }
+    methodToCall = dispatch.get(var, paintIt)
+    methodToCall()
+
+if __name__ == '__main__':
+    if len(sys.argv) == 1:
+        print "No value provided"
+        exit(1)
+    doSwitch(sys.argv[1])
+
+Question 3.
+
+Not a Java developer, but I think the bug is in this line:
+
+int unit = si ? 1000 : 1024;
+because kibi units are based on power of 2. Kilobytes = 1000 byte. So the logic is reverse.
+Also I would put a check for bytes being negative in the beginning of the function, like:
+
+if (bytes < 0) return "wrong value";
+Also following the logic when power > 0 and si == False and bytes == 1022 (Ex.) format string needs to change to show 3 digits after the decimal point:
+String format = power == 0 ? "%.0f %s" : "%.3f %s";
+
+Question 4
+
+Here is the source for Binary File Analysis:
+
+import sys
+import string
+
+printable = set(ord(c) for c in string.printable)
+
+def strings(filename, min=4):
+    with open(filename, 'rb') as f:
+        result = bytearray()
+        for c in f.read():
+            if ord(c) in printable:
+                result.append(ord(c))
+                continue
+            if len(result) >= min:
+                print result.decode('ASCII')
+            result = bytearray()
+        if len(result):
+            print result.decode('ASCII')
+
+if __name__ == '__main__':
+    if len(sys.argv) == 1:
+        print "Usage printableChar <filename>"
+        exit(1)
+
+    strings(sys.argv[1])
+
+
+Question 5 - Circular Prime Numbers:
+
+Here is the code:
+
+import sys
+
+def isPrime(val):
+    isPrime = True
+    for i in range (2, val/2+1):
+        if (val % i ==0):
+            isPrime = False
+            break
+    return isPrime
+
+def reverseMe(val):
+    return int(str(val)[::-1])
+
+def reverseMeDigits(val):
+    reverrsedVal = 0
+    while (val !=0):
+        r = int(val%10)
+        reverrsedVal = reverrsedVal*10 + r
+        val = int(val/10)
+    return (reverrsedVal)
+
+def findThem(top):
+    circlularPrimes = []
+    for num in range (2, top):
+        if isPrime(num):
+            #Can be done with slicing int(str(val)[::-1]) - just because I can, but doing numeric oprations seems like the right way
+            reversedPrime  = reverseMeDigits(num)
+            if isPrime(reversedPrime):
+                circlularPrimes.append(num)
+                #print "Circular prime " + str(num)
+    print(", ".join([str(i) for i in circlularPrimes]))
+    #print ("{0},".format(circlularPrimes))[1: -2]
+
+
+if __name__ == '__main__':
+    top = 50000
+    if len(sys.argv) == 2:
+        top = int(sys.argv[1])
+    findThem(top)
+
+
